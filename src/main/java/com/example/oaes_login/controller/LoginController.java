@@ -13,8 +13,13 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @PostMapping("")
-    public ResponseEntity<Object> login(@RequestBody User user) throws Exception {
+    @PostMapping("/userID")
+    public ResponseEntity<Object> loginByUserID(@RequestBody User user) throws Exception {
         return new ResponseEntity<>(loginService.authenticateByUserID(user.getUserID(), user.getPassword()), HttpStatus.OK);
+    }
+
+    @PostMapping("/email")
+    public ResponseEntity<Object> loginByEmail(@RequestBody User user) throws Exception {
+        return new ResponseEntity<>(loginService.authenticateByEmail(user.getEmail(), user.getPassword()), HttpStatus.OK);
     }
 }

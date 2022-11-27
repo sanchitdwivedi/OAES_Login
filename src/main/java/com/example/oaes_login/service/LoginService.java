@@ -28,6 +28,14 @@ public class LoginService {
         else return user;
     }
 
+    public Object authenticateByEmail(String email, String password) throws Exception {
+        User user = userService.getUserByEmail(email);
+        if(user==null) return "Invalid details";
+        String res = authenticate(user, password);
+        if(!res.equals("valid")) return res;
+        else return user;
+    }
+
     public String authenticateStudent(Student student, String password){
         if(student.getLocked()==1){
             return "Exception: The student account is currently locked. Please contact your exam coordinator.";

@@ -8,6 +8,6 @@ public class Coordinator extends User{
     }
 
     public Coordinator(long uuid, long userID, String password, String email) {
-        super(uuid, userID, password);
+        super(uuid, userID, password, email);
     }
 }

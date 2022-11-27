@@ -13,13 +13,20 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false, unique = true)
+    private String email;
+
     public User() {
     }
 
-    public User(long uuid, long userID, String password) {
-        this.uuid = uuid;
-        this.userID = userID;
-        this.password = password;
+    @Override
+    public String toString() {
+        return "User{" +
+                "uuid=" + uuid +
+                ", userID=" + userID +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 
     public long getUuid() {
@@ -46,13 +53,19 @@ public class User {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "uuid=" + uuid +
-                ", userID=" + userID +
-                ", password='" + password + '\'' +
-                '}';
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public User(long uuid, long userID, String password, String email) {
+        this.uuid = uuid;
+        this.userID = userID;
+        this.password = password;
+        this.email = email;
     }
 }
 

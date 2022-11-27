@@ -20,4 +20,8 @@ public class UserService {
     public User getUserById(long userId) throws Exception {
         return userDao.findByUserId(userId);
     }
+
+    public User getUserByEmail(String email) throws Exception {
+        return userDao.findByEmail(email);
+    }
 }

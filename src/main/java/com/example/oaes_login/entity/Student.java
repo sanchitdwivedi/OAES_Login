@@ -17,7 +17,7 @@ public class Student extends User{
     private int testStatus;
 
     public Student(long uuid, long userID, String password, String email, String rollNo, College college, int locked, int triesLeft) {
-        super(uuid, userID, password);
+        super(uuid, userID, password, email);
         this.rollNo = rollNo;
         this.college = college;
         this.locked = locked;

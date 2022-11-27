@@ -1,6 +1,5 @@
 package com.example.oaes_login.dao;
 
-import com.example.oaes_login.entity.Student;
 import com.example.oaes_login.entity.User;
 import com.example.oaes_login.util.SessionUtil;
 import org.hibernate.Criteria;
@@ -39,5 +38,15 @@ public class UserDaoImpl implements UserDao {
         }
 
         session.close();
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        Session session = SessionUtil.getSession();
+        Criteria criteria = session.createCriteria(User.class);
+        criteria.add(Restrictions.eq("email", email));
+        User user = (User) criteria.uniqueResult();
+        session.close();
+        return user;
     }
 }
